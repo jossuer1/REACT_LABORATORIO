@@ -1,82 +1,31 @@
-/*
+import { useEffect, useState } from "react";
 
-  1- Localstorage
-
-*/
-
-import { useEffect, useState } from "react"
-
-
-const Decimo = () => {
-
-  const [userToken, setUserToken] = useState({})
-
-  const user = {
-    name: "Byron",
-    rol: "Admin",
-    token:"1234***"
-  }
-
-
-  const obtenerToken = ()=>{
-    const token = JSON.parse(localStorage.getItem("token-user"))
-    setUserToken(token)
-  }
-  
-  const limpiarToken = ()=>{
-    localStorage.removeItem("token-user")
-    setUserToken(null)
-  }
-  
-
+const Tema = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    const temaGuardado = localStorage.getItem("dark-mode");
+    return temaGuardado ? JSON.parse(temaGuardado) : false;
+  });
 
   useEffect(() => {
-    localStorage.setItem("token-user", JSON.stringify(user))
-  }, [])
+    localStorage.setItem("dark-mode", JSON.stringify(darkMode));
+  }, [darkMode]);
 
-  
+  return (
+    <div
+      className={`min-vh-100 d-flex flex-column justify-content-center align-items-center ${
+        darkMode ? "bg-dark text-light" : "bg-light text-dark"
+      }`}
+    >
+      <h1 className="mb-4">{darkMode ? "Modo oscuro 🌙" : "Modo claro ☀️"}</h1>
 
-  
-
-return (
-  <>
-    <h1 className="font-bold text-2xl">Localstorage</h1>
-
-    <hr className="border-gray-400 mb-8"/>
-
-    <ul className="list-disc pl-5">
-      <li>
-        LocalStorage sirve para mantener información en el navegador incluso después de recargar o cerrar la página.
-      </li>
-      <li>
-        Los datos se guardan en pares clave–valor (como un diccionario).
-      </li>
-      <li>
-        Solo admite strings → si se quiere guardar se debe usar JSON.stringify() y para leerlos se usa JSON.parse()
-      </li>
-    </ul>
-
-
-
-
-    <div className="flex justify-center mb-8 mt-8">
-
-      <div className="w-120 border rounded-lg p-4 w-80 text-center">
-
-        <h2 className="text-lg font-semibold mb-2">{userToken?.name}</h2>
-
-        <p className="mb-3">{userToken?.rol}</p>
-        
-        <p className="mb-3">{userToken?.token}</p>
-
-        <button className="bg-green-700 text-white py-1 px-3 mx-1 rounded mt-4" onClick={obtenerToken}>Obtener Token</button>
-        <button className="bg-red-700 text-white py-1 px-3 rounded" onClick={limpiarToken}>Limpiar Token</button>
-      </div>
-
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className={`btn ${darkMode ? "btn-light" : "btn-dark"}`}
+      >
+        Cambiar tema
+      </button>
     </div>
+  );
+};
 
-  </>
-)
-}
-
-export default Decimo
+export default Tema;

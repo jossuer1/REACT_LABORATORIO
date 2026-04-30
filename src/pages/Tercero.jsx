@@ -52,8 +52,9 @@ const Tercero = () => {
       </div>
 
       <div className="text-center">
+        <br />
         <button
-          className="bg-yellow-500 text-white py-1 px-4 rounded"
+          className="btn btn-success mx-1"
           onClick={() => setBuscar(buscar + 1)}
         >
           🔀 Nuevo Pokémon

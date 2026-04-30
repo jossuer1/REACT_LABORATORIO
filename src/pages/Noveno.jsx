@@ -17,7 +17,7 @@ const ListaTareas = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3">📝 Lista de Tareas</h1>
+      <h1 className="mb-3">Lista de Tareas</h1>
 
       {/* INPUT + BOTÓN */}
       <div className="d-flex mb-3">

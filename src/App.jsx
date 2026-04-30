@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Primero from "./pages/Primero";
 import Segundo from "./pages/Segundo";
@@ -11,7 +11,7 @@ import Decimo from "./pages/Decimo";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<LandingPage />}>
           <Route index element={<Primero />} />
@@ -25,7 +25,7 @@ function App() {
           <Route path="localstorage" element={<Decimo />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

@@ -27,7 +27,7 @@ const Septimo = () => {
         <p>Género: {detalle.genero}</p>
 
         <button
-          className="bg-gray-600 text-white py-1 px-3 rounded w-full mt-4"
+          className="btn btn-danger btn-sm mt-4"
           onClick={() => {
             setCancion({
               nombre: "The way I loved you",
